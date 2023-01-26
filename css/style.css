@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+body{
+    width: 80%;
+    margin: 0 auto;
+}
+header .bloc_logo{
+    width: 30%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+header h1{
+    color: #D04F4F;
+    font-size: 36px;
+    font-family: 'DM Sans';
+    margin-top: 10px;
+}
+.recherche_principale{
+    display: flex;
+    margin: 15px 0;
+}
+.recherche_principale input,
+.recherche_principale button{
+    background-color: #E7E7E7;
+    border: none;
+    color: #000;
+}
+.recherche_principale input{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 95%;
+    padding-left: 15px;
+}
+.recherche_principale button{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 15px;
+}
+
+.filtres_selectiones, .filtres_precis{
+    margin: 15px 0;
+}
+
+.filtres_precis button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'lato';
+    font-weight: 700;
+    margin: 0 10px;
+}
+.filtres_ingredients{
+    background-color: #ED6454;
+}
+.filtres_appareils{
+    background-color: #68D9A4;
+}
+.filtres_ustensiles{
+    background-color: #3282F7;
+}
+
+.section_recettes, .recette_header{
+    display: flex;
+    justify-content: space-between;
+}
+.section_recettes .recette{
+    width: 30%;
+}
+.recette_image{
+    height: 200px;
+    background-color: rgb(82, 80, 80);
+}
+.recette_content{
+    background-color: #E7E7E7;
+}
+.section_recettes .recette_infos{
+    display: flex;
+}
+.recette_ingredients, .recette_description{
+    width: 50%;
+}
