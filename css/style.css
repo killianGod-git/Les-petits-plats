@@ -3,6 +3,7 @@
 body{
     width: 80%;
     margin: 0 auto;
+    font-family: 'Roboto';
 }
 header .bloc_logo{
     width: 30%;
@@ -39,11 +40,13 @@ header h1{
     padding: 15px;
 }
 
-.filtres_selectiones, .filtres_precis{
+.filtres_selectiones, #filtres_precis{
     margin: 15px 0;
+    display: flex;
+    gap: 15px;
 }
 
-.filtres_precis button{
+#filtres_precis select{
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -52,33 +55,54 @@ header h1{
     font-weight: 700;
     margin: 0 10px;
 }
-.filtres_ingredients{
+#my-ingredients{
     background-color: #ED6454;
 }
-.filtres_appareils{
+#my-appareils{
     background-color: #68D9A4;
 }
-.filtres_ustensiles{
+#my-ustensiles{
     background-color: #3282F7;
 }
 
-.section_recettes, .recette_header{
+#section_recettes, .recette_header{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-.section_recettes .recette{
+.recette_titre{
+    width: 80%;
+}
+.recette_temps{
+    width: 20%;
+}
+.recette_titre h2{
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#section_recettes .recette{
     width: 30%;
+    margin: 15px 0;
 }
-.recette_image{
-    height: 200px;
-    background-color: rgb(82, 80, 80);
-}
-.recette_content{
+.recette{
     background-color: #E7E7E7;
 }
-.section_recettes .recette_infos{
+.recette_image{
+    height: 178px;
+    background-color: #C7BEBE;
+}
+#section_recettes .recette_infos{
     display: flex;
 }
 .recette_ingredients, .recette_description{
     width: 50%;
+}
+
+#search-ingredients{
+    display: none;
+}
+#search-ingredients:focus{
+    border: 3px solid black;
 }
