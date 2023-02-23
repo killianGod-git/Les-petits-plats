@@ -46,7 +46,7 @@ header h1{
     gap: 15px;
 }
 
-#filtres_precis select{
+#filtres_precis .dropdown-btn{
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -54,6 +54,9 @@ header h1{
     font-family: 'lato';
     font-weight: 700;
     margin: 0 10px;
+}
+.dropdown-content{
+    display: none;
 }
 #my-ingredients{
     background-color: #ED6454;
@@ -99,10 +102,12 @@ header h1{
 .recette_ingredients, .recette_description{
     width: 50%;
 }
-
-#search-ingredients{
-    display: none;
+#dropdown_ingredients_content{
+    background-color: #3282F7;
+    color: #fff;
+    padding: 15px;
 }
-#search-ingredients:focus{
-    border: 3px solid black;
+#dropdown_ingredients_content a{
+    text-decoration: none;
+    color: #fff;
 }

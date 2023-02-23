@@ -26,7 +26,7 @@ function recipeCard(recipe){
             </div>
             <div class="recette_description">
             
-                <p>${recipe.description}</p>
+                <p class="description">${recipe.description}</p>
             </div>
         </div>
         
@@ -42,6 +42,14 @@ function displayRecipe(recipes){
         
     section.innerHTML += recipeCard( recipe)
     });
+const description = document.querySelectorAll('.description');
+const maxLength = 150;
+description.forEach(text =>{
+    if (text.innerHTML.length > maxLength) {
+        const truncatedText = text.innerHTML.slice(0, maxLength) + "...";
+        text.innerHTML = truncatedText;
+      }
+})
 }
 
 displayRecipe(recipes)

@@ -60,23 +60,24 @@ function ustensilesRecuperation(){
  function createDropdownOptions(type){
     if (type === 'ingredients'){
         const options = doublonIngredients()
-        const selectField = document.getElementById('my-' + type + '')
+        const selectField = document.getElementById("dropdown_ingredients_content")
+        console.log(selectField)
         options.forEach(dataOption => {
-            const optionDom = `<option value="${dataOption}">${dataOption}</option>`
+            const optionDom = `<a href="?${dataOption}">${dataOption}</a>`
             selectField.innerHTML += optionDom
         })
     } else if (type === 'appareils'){
         const options = doublonAppareils()
-        const selectField = document.getElementById('my-' + type + '')
+        const selectField = document.getElementById("dropdown_appareils_content")
         options.forEach(dataOption => {
-            const optionDom = `<option value="${dataOption}">${dataOption}</option>`
+            const optionDom = `<a href="?${dataOption}">${dataOption}</a>`
             selectField.innerHTML += optionDom
         })
     } else if( type === 'ustensiles'){
         const options = doublonUstensiles()
-        const selectField = document.getElementById('my-' + type + '')
+        const selectField = document.getElementById("dropdown_ustensiles_content")
         options.forEach(dataOption => {
-            const optionDom = `<option value="${dataOption}">${dataOption}</option>`
+            const optionDom = `<a href="?${dataOption}">${dataOption}</a>`
             selectField.innerHTML += optionDom
         })
     } else{
@@ -89,26 +90,9 @@ function ustensilesRecuperation(){
     createDropdownOptions('appareils')
     createDropdownOptions('ustensiles')
 
-
-
-        const select = document.getElementById('my-ingredients')
-        const input = document.getElementById('search-ingredients')
-        input.addEventListener("input", function() {
-            const searchTerm = this.value.toLowerCase();
-            for (let i = 0; i < select.options.length; i++) {
-              if (select.options[i].text.toLowerCase().indexOf(searchTerm) === -1) {
-                select.options[i].style.display = "none";
-              } else {
-                select.options[i].style.display = "block";
-              }
-            }
-          });
-    select.addEventListener('click', function(){
-        if(input.style.display === 'block'){
-            input.style.display = 'none'
-            input.focus
-        } else{
-            input.style.display = 'block'
-        }
-
+    
+    const dropdownBtnIngredients = document.getElementById("my-ingredients");
+    const dropdownContentIngredients = document.getElementById('dropdown_ingredients_content');
+    dropdownBtnIngredients.addEventListener('click', function(){
+      dropdownContentIngredients.style.display = "block"
     })
