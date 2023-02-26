@@ -1,3 +1,5 @@
+import { recipes } from "./index.js";
+
 function recipeCard(recipe){
     const cardRecipe = `
     <article class="recette" id="${recipe.id}">
@@ -35,7 +37,7 @@ function recipeCard(recipe){
 return cardRecipe
 }
 
-function displayRecipe(recipes){
+export function displayRecipe(recipes){
     recipes.forEach(recipe => {
         const section = document.getElementById('section_recettes')
         
@@ -52,4 +54,3 @@ description.forEach(text =>{
 })
 }
 
-displayRecipe(recipes)

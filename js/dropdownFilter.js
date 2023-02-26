@@ -1,10 +1,12 @@
+
+import { recipes } from "./index.js";
+
 // 
 // 
 // fonctions création dropdown a refactoriser 
 // trop de répétitions dans le code 
 // 
 // 
-
 // ingredients fonctions
 function ingredientsRecuperation(){
     const ingredientsList = []
@@ -57,27 +59,26 @@ function ustensilesRecuperation(){
 
 
 // création dropdown
- function createDropdownOptions(type){
+export function createDropdownOptions(type){
     if (type === 'ingredients'){
         const options = doublonIngredients()
         const selectField = document.getElementById("dropdown_ingredients_content")
-        console.log(selectField)
         options.forEach(dataOption => {
-            const optionDom = `<a href="?${dataOption}">${dataOption}</a>`
+            const optionDom = `<li>${dataOption}</li>`
             selectField.innerHTML += optionDom
         })
     } else if (type === 'appareils'){
         const options = doublonAppareils()
         const selectField = document.getElementById("dropdown_appareils_content")
         options.forEach(dataOption => {
-            const optionDom = `<a href="?${dataOption}">${dataOption}</a>`
+            const optionDom = `<li>${dataOption}</li>`
             selectField.innerHTML += optionDom
         })
     } else if( type === 'ustensiles'){
         const options = doublonUstensiles()
         const selectField = document.getElementById("dropdown_ustensiles_content")
         options.forEach(dataOption => {
-            const optionDom = `<a href="?${dataOption}">${dataOption}</a>`
+            const optionDom = `<li>${dataOption}</li>`
             selectField.innerHTML += optionDom
         })
     } else{
@@ -86,13 +87,37 @@ function ustensilesRecuperation(){
     
  }
 
-    createDropdownOptions('ingredients')
-    createDropdownOptions('appareils')
-    createDropdownOptions('ustensiles')
+
 
     
     const dropdownBtnIngredients = document.getElementById("my-ingredients");
-    const dropdownContentIngredients = document.getElementById('dropdown_ingredients_content');
+    const dropdownContentIngredients = document.getElementById('dropdown_ingredients_container');
     dropdownBtnIngredients.addEventListener('click', function(){
-      dropdownContentIngredients.style.display = "block"
+        if( dropdownContentIngredients.style.display === "none"){
+            dropdownContentIngredients.style.display = "block"
+        } else{
+            dropdownContentIngredients.style.display = "none"
+        }
+    })
+
+    const dropdownBtnAppareils = document.getElementById("my-appareils");
+    const dropdownContentAppareils = document.getElementById('dropdown_appareils_container');
+    dropdownBtnAppareils.addEventListener('click', function(){
+        if(dropdownContentAppareils.style.display === "none"){
+            dropdownContentAppareils.style.display = "block"
+        }
+        else {
+            dropdownContentAppareils.style.display = "none"
+        }
+    })
+
+    const dropdownBtnUstensiles = document.getElementById("my-ustensiles");
+    const dropdownContentUstensiles = document.getElementById('dropdown_ultensiles_container');
+    dropdownBtnUstensiles.addEventListener('click', function(){
+        if ( dropdownContentUstensiles.style.display === "none"){
+            dropdownContentUstensiles.style.display = "block"
+        } else {
+            dropdownContentUstensiles.style.display = "none"
+        }
+
     })

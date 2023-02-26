@@ -29,25 +29,24 @@
         </div>
         <div id="filtres_precis">
             <div id="containerIngredients">
-                <!-- <input type="text" id="search-ingredients" placeholder="Rechercher un ingrédient">
-                <select id="my-ingredients" >
-                    <option> Ingredients</option> 
-                </select> -->
                 <button class="dropdown-btn" id="my-ingredients">Ingrédients</button>
-                <div class="dropdown-content" id="dropdown_ingredients_content">
+                <div class="dropdown-content" id="dropdown_ingredients_container">
                     <input type="text" placeholder="Rechercher un ingrédient" id="search-ingredients">
+                    <ul id="dropdown_ingredients_content"></ul>
                 </div>
             </div>
             <div id="containerAppareils">
                 <button class="dropdown-btn" id="my-appareils">Appareils</button>
-                <div class="dropdown-content" id="dropdown_appareils_content">
-                    <input type="text" placeholder="Rechercher un appareil">
+                <div class="dropdown-content" id="dropdown_appareils_container">
+                    <input type="text" placeholder="Rechercher un appareil" id="search-appareils">
+                    <ul id="dropdown_appareils_content"></ul>
                 </div>
             </div>
             <div id="containerUstensiles">
                 <button class="dropdown-btn" id="my-ustensiles">Ustensiles</button>
-                <div class="dropdown-content" id="dropdown_ustensiles_content">
-                    <input type="text" placeholder="Rechercher un ustensile">
+                <div class="dropdown-content" id="dropdown_ultensiles_container">
+                    <input type="text" placeholder="Rechercher un ustensile" id="search-ustensiles">
+                    <ul id="dropdown_ustensiles_content"></ul>
                 </div>
             </div>
 
@@ -56,10 +55,12 @@
     <section id="section_recettes">
 
     </section>
-    <script src="./js/index.js" type="module"></script>
+
     <!-- <script src="./js/data/recipe.js"></script>
     <script src="./js/displayRecipe.js" ></script>
     <script src="./js/dropdownFilter.js"></script> -->
 </body>
+<script src="./js/index.js" type="module"></script>
+<script src="./js/inputFilter.js"></script>
 
 </html>

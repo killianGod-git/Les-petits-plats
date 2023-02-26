@@ -46,6 +46,10 @@ header h1{
     gap: 15px;
 }
 
+#filtres_precis ul{
+    column-count: 3;
+    column-gap: 5px;
+}
 #filtres_precis .dropdown-btn{
     padding: 10px;
     border: none;
@@ -53,18 +57,18 @@ header h1{
     color: #fff;
     font-family: 'lato';
     font-weight: 700;
-    margin: 0 10px;
+    width: 100%;
 }
 .dropdown-content{
     display: none;
 }
-#my-ingredients{
+#my-ustensiles{
     background-color: #ED6454;
 }
 #my-appareils{
     background-color: #68D9A4;
 }
-#my-ustensiles{
+#my-ingredients{
     background-color: #3282F7;
 }
 
@@ -102,12 +106,47 @@ header h1{
 .recette_ingredients, .recette_description{
     width: 50%;
 }
-#dropdown_ingredients_content{
+#dropdown_ingredients_container{
     background-color: #3282F7;
     color: #fff;
     padding: 15px;
 }
-#dropdown_ingredients_content a{
-    text-decoration: none;
+#dropdown_ingredients_container input{
+    width: 100%;
+    border: none;
     color: #fff;
+    background-color: #3282F7;
+}
+
+#dropdown_appareils_container{
+    background-color: #68D9A4;
+    color: #fff;
+    padding: 15px;
+}
+#dropdown_appareils_container input{
+    width: 100%;
+    border: none;
+    color: #fff;
+    background-color: #68D9A4;
+}
+
+#dropdown_ultensiles_container{
+    background-color: #ED6454;
+    color: #fff;
+    padding: 15px;
+}
+#dropdown_ultensiles_container input{
+    width: 100%;
+    border: none;
+    color: #fff;
+    background-color: #ED6454;
+
+}
+#filtres_precis li{
+    list-style: none;
+    color: #fff;
+}
+.hidden{
+
+    display: none;
 }
