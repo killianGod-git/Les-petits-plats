@@ -61,6 +61,7 @@ header h1{
 }
 .dropdown-content{
     display: none;
+    border-radius: 15px;
 }
 #my-ustensiles{
     background-color: #ED6454;
@@ -146,7 +147,9 @@ header h1{
     list-style: none;
     color: #fff;
 }
+.visible{
+    display: block;
+}
 .hidden{
-
     display: none;
 }

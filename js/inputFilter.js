@@ -1,11 +1,9 @@
-const inputs = document.querySelectorAll('input')
-const recipeBloc = document.querySelectorAll('article')
-const ingredientsListe = document.getElementById('dropdown_ingredients_content')
-const appareilsListe = document.getElementById('dropdown_appareils_content')
-const ulstensilesListe = document.getElementById('dropdown_ustensiles_content')
+const mainSearch = document.getElementById('searchbar')
+const secondSearchContainer = document.getElementById('filtres_precis')
+const secondSearch = secondSearchContainer.querySelectorAll('input')
 
 
-console.log(inputs)
-inputs.addEventListener('keyup', function(text){
-    console.log(text)
+console.log(secondSearch)
+mainSearch.addEventListener('keyup', function(text){
+    console.log(mainSearch)
 })
