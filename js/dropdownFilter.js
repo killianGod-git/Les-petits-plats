@@ -31,15 +31,24 @@ export function displayUstensilesList(ustensiles){
     listContainer.innerHTML = content
 }
 
-
-
-export function filterIngredients(value){
-    const resultat = detailsRecettes.ingredients.filter( ingredient => ingredient.includes(value) )
-    displayIngredientsList(resultat)
+export function filterElements(value, type){
+    switch(type){
+        case 'ingredients' :
+            const resultatIngredients = detailsRecettes.ingredients.filter( ingredient => ingredient.includes(value) )
+            displayIngredientsList(resultatIngredients)
+        break
+        case 'appareils' :
+            const resultatAppareils = detailsRecettes.appareils.filter( appareil => appareil.includes(value) )
+            displayAppareilsList(resultatAppareils)
+        break
+        case 'ustensiles' :
+            const resultatUstensiles = detailsRecettes.ustensiles.filter( ustensile => ustensile.includes(value) )
+            displayUstensilesList(resultatUstensiles)
+    }
 }
 
-    const dropdownBtns = document.querySelectorAll('.dropdown-btn')
-    dropdownBtns.forEach( function(bouton){
+const dropdownBtns = document.querySelectorAll('.dropdown-btn')
+    dropdownBtns.forEach( (bouton) => {
         bouton.addEventListener('click', function(){
             const parent = bouton.parentNode;
             bouton.classList.toggle('hidden')
