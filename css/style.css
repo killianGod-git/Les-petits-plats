@@ -153,3 +153,14 @@ header h1{
 .hidden{
     display: none;
 }
+li.disabled {
+    pointer-events: none;
+    color: gray!important;
+}
+
+#tags span{
+    background-color: #3282F7;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}

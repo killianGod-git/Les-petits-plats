@@ -10,7 +10,7 @@ import { recipes, detailsRecettes } from "./index.js";
 // ingredients fonctions
 
 // création dropdown
-export function dropdown(data){
+export function displayDropdown(data){
     displayIngredientsList(data.ingredients)
     displayAppareilsList(data.appareils)
     displayUstensilesList(data.ustensiles)
@@ -34,6 +34,7 @@ export function displayUstensilesList(ustensiles){
 export function filterElements(value, type){
     switch(type){
         case 'ingredients' :
+            console.log(detailsRecettes, 'detailsRecettes')
             const resultatIngredients = detailsRecettes.ingredients.filter( ingredient => ingredient.includes(value) )
             displayIngredientsList(resultatIngredients)
         break

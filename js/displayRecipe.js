@@ -1,6 +1,8 @@
-import { recipes } from "./index.js";
+import {  decomposeRecettes } from "./index.js";
+import { displayDropdown } from "./dropdownFilter.js";
 
 function recipeCard(recipe){
+    const ingredientElement = recipe.ingredients.map(ingredient => `<li>${ingredient.ingredient}</li>`).join('')
     const cardRecipe = `
     <article class="recette" id="${recipe.id}">
     <div class="recette_image">
@@ -18,12 +20,7 @@ function recipeCard(recipe){
         <div class="recette_infos">
             <div class="recette_ingredients">
                 <ul id="liste_ingredients">
-                    <li>1</li>
-                    <li>1</li>
-                    <li>1</li>
-                    <li>1</li>
-                    <li>1</li>
-
+                    ${ingredientElement}
                 </ul>
             </div>
             <div class="recette_description">
@@ -38,19 +35,20 @@ return cardRecipe
 }
 
 export function displayRecipe(recipes){
+    const section = document.getElementById('section_recettes')
+    section.innerHTML = ""
     recipes.forEach(recipe => {
-        const section = document.getElementById('section_recettes')
-        
-        
-    section.innerHTML += recipeCard( recipe)
+        section.innerHTML += recipeCard( recipe)
     });
-const description = document.querySelectorAll('.description');
-const maxLength = 150;
-description.forEach(text =>{
-    if (text.innerHTML.length > maxLength) {
-        const truncatedText = text.innerHTML.slice(0, maxLength) + "...";
-        text.innerHTML = truncatedText;
-      }
-})
+    const detailsRecettes = decomposeRecettes(recipes)
+    displayDropdown(detailsRecettes)
+    const description = document.querySelectorAll('.description');
+    const maxLength = 150;
+    description.forEach(text =>{
+        if (text.innerHTML.length > maxLength) {
+            const truncatedText = text.innerHTML.slice(0, maxLength) + "...";
+            text.innerHTML = truncatedText;
+        }
+    })
 }
 

@@ -1,8 +1,8 @@
 import { getRecipes } from "./api.js"
 import { displayRecipe } from "./displayRecipe.js"
-import { dropdown } from "./dropdownFilter.js"
 import {  filterElements } from "./dropdownFilter.js"
 import { syncInput, inputFilterRecipes } from "./inputFilter.js"
+import { tagCreation } from "./tags.js"
 
 export let recipes = []
 export const detailsRecettes = {
@@ -11,7 +11,7 @@ export const detailsRecettes = {
     ustensiles : []
 }
 
-function decomposeRecettes(recipes){
+export function decomposeRecettes(recipes){
     const ingredientsList = []
     const appareilsList = []
     const ustensilesList = []
@@ -35,9 +35,7 @@ function decomposeRecettes(recipes){
 
 async function init(){
     recipes = await getRecipes()
-    decomposeRecettes(recipes)
     displayRecipe(recipes)
-    dropdown(detailsRecettes)
 
     const inputs = document.querySelectorAll('#filtres_precis .filterDropdown')
     inputs.forEach(input => {
@@ -47,6 +45,7 @@ async function init(){
     })
     inputFilterRecipes()
     syncInput()
+    tagCreation()
 }
 
 init()
