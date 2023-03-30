@@ -2,7 +2,6 @@ import { getRecipes } from "./api.js"
 import { displayRecipe } from "./displayRecipe.js"
 import {  filterElements } from "./dropdownFilter.js"
 import { syncInput, inputFilterRecipes } from "./inputFilter.js"
-import { tagCreation } from "./tags.js"
 
 export let recipes = []
 export const detailsRecettes = {
