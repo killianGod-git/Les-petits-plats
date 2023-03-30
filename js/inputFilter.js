@@ -19,7 +19,6 @@ function searchRecipes(searchTerm){
 function filterRecipes(){
     const searchTerm = mainSearch.value;
     const searchedRecipes = searchRecipes(searchTerm);
-    console.log(searchedRecipes)
     displayRecipe(searchedRecipes)
         
     
@@ -29,3 +28,35 @@ export function inputFilterRecipes(){
         filterRecipes()
     })
 }
+
+export function tagsFilterRecipes(tag, type){
+    const recipeResult = [] 
+    switch (type ){
+        case "ingredients" : 
+            recipes.forEach(recipe => {
+                recipe.ingredients.forEach(ingredient => {
+                    if (ingredient.ingredient.toLowerCase() === tag.toLowerCase()){
+                        recipeResult.push(recipe)
+                    }
+                })
+            })
+        break;
+        case 'appareils' : 
+            recipes.forEach(recipe => {
+                if (recipe.appliance.toLowerCase() === tag.toLowerCase()){
+                    recipeResult.push(recipe)
+                }
+            })
+            break;
+            case "ustensiles":
+                recipes.forEach(recipe => {
+                    recipe.ustensils.forEach(ustensil => {
+                        if (ustensil.toLowerCase() === tag.toLowerCase()){
+                            recipeResult.push(recipe)
+                        }
+                    })
+                })
+            break; 
+        }
+        return recipeResult
+    }

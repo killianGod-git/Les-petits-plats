@@ -51,7 +51,7 @@ header h1{
     column-gap: 5px;
 }
 #filtres_precis .dropdown-btn{
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -157,9 +157,23 @@ li.disabled {
     pointer-events: none;
     color: gray!important;
 }
-
-#tags span{
+.liste_ingredients{
+    list-style: none;
+}
+#tags .ingredients-tag {
     background-color: #3282F7;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+#tags .appareils-tag{
+    background-color: #68D9A4;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
+#tags .ustensils-tag{
+    background-color: #D04F4F;
     color: #fff;
     padding: 5px;
     border-radius: 5px;

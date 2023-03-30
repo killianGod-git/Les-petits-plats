@@ -1,5 +1,7 @@
 
 import { recipes, detailsRecettes } from "./index.js";
+import { tagsFilterRecipes } from "./inputFilter.js";
+import { displayRecipe } from "./displayRecipe.js";
 
 // 
 // 
@@ -17,24 +19,53 @@ export function displayDropdown(data){
 }
  export function displayIngredientsList(ingredients){
         const listContainer = document.getElementById("dropdown_ingredients_content")
-        const content = ingredients.map(item => `<li>${item}</li>`).join('')
+        const content = ingredients.map(item => `<li data-type="ingredients" >${item}</li>`).join('')
         listContainer.innerHTML = content
+        const listLi=listContainer.querySelectorAll('li')
+        listLi.forEach(item => item.addEventListener('click', function(e){
+            const tags = document.getElementById("tags");
+            const tagData = item.innerHTML
+            const tag = `<span class="tag ingredients-tag">${tagData}</span>`
+	    	tags.innerHTML += tag;
+		    item.classList.add("disabled");
+			const resultRecipe = tagsFilterRecipes(tagData, 'ingredients')
+			displayRecipe(resultRecipe)
+        }))
  }
  export function displayAppareilsList(appareils){
     const listContainer = document.getElementById("dropdown_appareils_content")
-    const content = appareils.map(item => `<li>${item}</li>`).join('')
+    const content = appareils.map(item => `<li data-type="appareils">${item}</li>`).join('')
     listContainer.innerHTML = content
+    const listLi=listContainer.querySelectorAll('li')
+        listLi.forEach(item => item.addEventListener('click', function(e){
+            const tags = document.getElementById("tags");
+            const tagData = item.innerHTML
+            const tag = `<span class="tag appareils-tag">${tagData}</span>`
+	    	tags.innerHTML += tag;
+		    item.classList.add("disabled");
+			const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
+			displayRecipe(resultRecipe)
+        }))
 }
 export function displayUstensilesList(ustensiles){
     const listContainer = document.getElementById("dropdown_ustensiles_content")
-    const content = ustensiles.map(item => `<li>${item}</li>`).join('')
+    const content = ustensiles.map(item => `<li data-type="ustensiles" >${item}</li>`).join('')
     listContainer.innerHTML = content
+    const listLi=listContainer.querySelectorAll('li')
+        listLi.forEach(item => item.addEventListener('click', function(e){
+            const tags = document.getElementById("tags");
+            const tagData = item.innerHTML
+            const tag = `<span class="tag ustensils-tag">${tagData}</span>`
+	    	tags.innerHTML += tag;
+		    item.classList.add("disabled");
+			const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
+			displayRecipe(resultRecipe)
+        }))
 }
 
 export function filterElements(value, type){
     switch(type){
         case 'ingredients' :
-            console.log(detailsRecettes, 'detailsRecettes')
             const resultatIngredients = detailsRecettes.ingredients.filter( ingredient => ingredient.includes(value) )
             displayIngredientsList(resultatIngredients)
         break
@@ -48,12 +79,26 @@ export function filterElements(value, type){
     }
 }
 
-const dropdownBtns = document.querySelectorAll('.dropdown-btn')
-    dropdownBtns.forEach( (bouton) => {
-        bouton.addEventListener('click', function(){
-            const parent = bouton.parentNode;
-            bouton.classList.toggle('hidden')
-            const liste = parent.querySelector('.dropdown-content')
-            liste.classList.toggle('visible')
-        });
-    })
+
+
+    const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+
+dropdownBtns.forEach((bouton) => {
+  bouton.addEventListener('click', function() {
+    const parent = bouton.parentNode;
+    bouton.classList.toggle('hidden');
+    const liste = parent.querySelector('.dropdown-content');
+    liste.classList.toggle('visible');
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown-content') && !e.target.closest('.dropdown-btn')) {
+      const dropdowns = document.querySelectorAll('.dropdown-content');
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove('visible');
+        if ( bouton.classList.contains("hidden")){
+            bouton.classList.toggle('hidden');
+        }
+      });
+    }
+  });
+});

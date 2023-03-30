@@ -19,7 +19,7 @@ function recipeCard(recipe){
         </div>
         <div class="recette_infos">
             <div class="recette_ingredients">
-                <ul id="liste_ingredients">
+                <ul class="liste_ingredients">
                     ${ingredientElement}
                 </ul>
             </div>

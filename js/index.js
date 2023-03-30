@@ -45,7 +45,7 @@ async function init(){
     })
     inputFilterRecipes()
     syncInput()
-    tagCreation()
+    
 }
 
 init()
