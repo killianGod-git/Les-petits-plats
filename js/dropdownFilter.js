@@ -29,7 +29,7 @@ export function displayDropdown(data){
 	    	tags.innerHTML += tag;
 		    item.classList.add("disabled");
 			const resultRecipe = tagsFilterRecipes(tagData, 'ingredients')
-			displayRecipe(resultRecipe)
+			// displayRecipe(resultRecipe)
         }))
  }
  export function displayAppareilsList(appareils){
@@ -44,7 +44,7 @@ export function displayDropdown(data){
 	    	tags.innerHTML += tag;
 		    item.classList.add("disabled");
 			const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
-			displayRecipe(resultRecipe)
+			// displayRecipe(resultRecipe)
         }))
 }
 export function displayUstensilesList(ustensiles){
@@ -59,7 +59,7 @@ export function displayUstensilesList(ustensiles){
 	    	tags.innerHTML += tag;
 		    item.classList.add("disabled");
 			const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
-			displayRecipe(resultRecipe)
+			// displayRecipe(resultRecipe)
         }))
 }
 
