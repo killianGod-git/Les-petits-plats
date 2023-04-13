@@ -1,4 +1,4 @@
-import { recipes , resultRecipes } from "./index.js";
+import { recipes ,resultRecipes } from "./index.js";
 import { displayRecipe } from "./displayRecipe.js";
 const mainSearch = document.getElementById('searchbar')
 const secondSearchContainer = document.getElementById('filtres_precis')
@@ -33,7 +33,7 @@ export function tagsFilterRecipes(tag, type){
     let recipeResult = [] 
     switch (type ){
         case "ingredients" : 
-            resultRecipes.forEach(recipe => {
+           resultRecipes.recipes.forEach(recipe => {
                 recipe.ingredients.forEach(ingredient => {
                     if (ingredient.ingredient.toLowerCase() === tag.toLowerCase()){
                         recipeResult.push(recipe)
@@ -42,14 +42,14 @@ export function tagsFilterRecipes(tag, type){
             })
         break;
         case 'appareils' : 
-            resultRecipes.forEach(recipe => {
+           resultRecipes.recipes.forEach(recipe => {
                 if (recipe.appliance.toLowerCase() === tag.toLowerCase()){
                     recipeResult.push(recipe)
                 }
             })
             break;
             case "ustensiles":
-                resultRecipes.forEach(recipe => {
+               resultRecipes.recipes.forEach(recipe => {
                     recipe.ustensils.forEach(ustensil => {
                         if (ustensil.toLowerCase() === tag.toLowerCase()){
                             recipeResult.push(recipe)
@@ -58,8 +58,7 @@ export function tagsFilterRecipes(tag, type){
                 })
             break; 
         }
-        console.log(resultRecipes, recipeResult)
-        resultRecipes = [...recipeResult]
-        displayRecipe(resultRecipes)
+       resultRecipes.recipes = [...recipeResult]
+        displayRecipe(resultRecipes.recipes)
         return recipeResult
     }

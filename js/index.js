@@ -2,7 +2,7 @@ import { getRecipes } from "./api.js"
 import { displayRecipe } from "./displayRecipe.js"
 import {  filterElements } from "./dropdownFilter.js"
 import { syncInput, inputFilterRecipes } from "./inputFilter.js"
-export let resultRecipes = []
+export let resultRecipes = {recipes: []}
 export let recipes = []
 export const detailsRecettes = {
     ingredients : [],
@@ -34,7 +34,7 @@ export function decomposeRecettes(recipes){
 
 async function init(){
     recipes = await getRecipes()
-    resultRecipes = [...recipes]
+    resultRecipes.recipes = [...recipes]
     displayRecipe(recipes)
 
 

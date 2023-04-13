@@ -25,10 +25,11 @@ export function displayDropdown(data){
         listLi.forEach(item => item.addEventListener('click', function(e){
             const tags = document.getElementById("tags");
             const tagData = item.innerHTML
-            const tag = `<span class="tag ingredients-tag">${tagData}</span>`
+            const tag = `<div class="tag ingredients-tag">${tagData} <span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
 	    	tags.innerHTML += tag;
 		    item.classList.add("disabled");
 			const resultRecipe = tagsFilterRecipes(tagData, 'ingredients')
+            deleteTags()
 			// displayRecipe(resultRecipe)
         }))
  }
@@ -40,10 +41,11 @@ export function displayDropdown(data){
         listLi.forEach(item => item.addEventListener('click', function(e){
             const tags = document.getElementById("tags");
             const tagData = item.innerHTML
-            const tag = `<span class="tag appareils-tag">${tagData}</span>`
+            const tag = `<div class="tag appareils-tag">${tagData} <span class="delete-tag 2"></span></div>`
 	    	tags.innerHTML += tag;
 		    item.classList.add("disabled");
 			const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
+            deleteTags()
 			// displayRecipe(resultRecipe)
         }))
 }
@@ -55,10 +57,11 @@ export function displayUstensilesList(ustensiles){
         listLi.forEach(item => item.addEventListener('click', function(e){
             const tags = document.getElementById("tags");
             const tagData = item.innerHTML
-            const tag = `<span class="tag ustensils-tag">${tagData}</span>`
+            const tag = `<div class="tag ustensils-tag">${tagData} <span class="delete-tag 3"></span></div>`
 	    	tags.innerHTML += tag;
 		    item.classList.add("disabled");
 			const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
+            deleteTags()
 			// displayRecipe(resultRecipe)
         }))
 }
@@ -102,3 +105,13 @@ dropdownBtns.forEach((bouton) => {
     }
   });
 });
+
+function deleteTags(){
+    let deleteTag = document.getElementsByClassName('delete-tag');
+    Array.prototype.forEach.call(deleteTag, function(tags){
+        tags.addEventListener('click', ( )=>{
+            tags.parentNode.remove()
+            displayRecipe(recipes)
+        })
+    })
+}

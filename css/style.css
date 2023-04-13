@@ -163,18 +163,18 @@ li.disabled {
 #tags .ingredients-tag {
     background-color: #3282F7;
     color: #fff;
-    padding: 5px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 #tags .appareils-tag{
     background-color: #68D9A4;
     color: #fff;
-    padding: 5px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 #tags .ustensils-tag{
     background-color: #D04F4F;
     color: #fff;
-    padding: 5px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
