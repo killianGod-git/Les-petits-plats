@@ -41,7 +41,7 @@ const listLi=listContainer.querySelectorAll('li')
     listLi.forEach(item => item.addEventListener('click', function(e){
         const tags = document.getElementById("tags");
         const tagData = item.innerHTML
-        const tag = `<div class="tag appareils-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 2"></span></div>`
+        const tag = `<div class="tag ingredients-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
         tags.innerHTML += tag;
         item.classList.add("disabled");
         const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
@@ -57,7 +57,7 @@ const listLi=listContainer.querySelectorAll('li')
     listLi.forEach(item => item.addEventListener('click', function(e){
         const tags = document.getElementById("tags");
         const tagData = item.innerHTML
-        const tag = `<div class="tag ustensils-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 3"></span></div>`
+        const tag = `<div class="tag ustensils-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
         tags.innerHTML += tag;
         item.classList.add("disabled");
         const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
