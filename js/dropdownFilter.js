@@ -1,6 +1,6 @@
 
 import { recipes, detailsRecettes } from "./index.js";
-import { tagsFilterRecipes } from "./inputFilter.js";
+import { tagsFilterRecipes, selectedTags } from "./inputFilter.js";
 import { displayRecipe } from "./displayRecipe.js";
 
 // 
@@ -17,53 +17,53 @@ export function displayDropdown(data){
     displayAppareilsList(data.appareils)
     displayUstensilesList(data.ustensiles)
 }
- export function displayIngredientsList(ingredients){
-        const listContainer = document.getElementById("dropdown_ingredients_content")
-        const content = ingredients.map(item => `<li data-type="ingredients" >${item}</li>`).join('')
-        listContainer.innerHTML = content
-        const listLi=listContainer.querySelectorAll('li')
-        listLi.forEach(item => item.addEventListener('click', function(e){
-            const tags = document.getElementById("tags");
-            const tagData = item.innerHTML
-            const tag = `<div class="tag ingredients-tag">${tagData} <span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
-	    	tags.innerHTML += tag;
-		    item.classList.add("disabled");
-			const resultRecipe = tagsFilterRecipes(tagData, 'ingredients')
-            deleteTags()
-			// displayRecipe(resultRecipe)
-        }))
- }
- export function displayAppareilsList(appareils){
-    const listContainer = document.getElementById("dropdown_appareils_content")
-    const content = appareils.map(item => `<li data-type="appareils">${item}</li>`).join('')
+export function displayIngredientsList(ingredients){
+    const listContainer = document.getElementById("dropdown_ingredients_content")
+    const content = ingredients.map(item => `<li data-type="ingredients" >${item}</li>`).join('')
     listContainer.innerHTML = content
     const listLi=listContainer.querySelectorAll('li')
-        listLi.forEach(item => item.addEventListener('click', function(e){
-            const tags = document.getElementById("tags");
-            const tagData = item.innerHTML
-            const tag = `<div class="tag appareils-tag">${tagData} <span class="delete-tag 2"></span></div>`
-	    	tags.innerHTML += tag;
-		    item.classList.add("disabled");
-			const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
-            deleteTags()
-			// displayRecipe(resultRecipe)
-        }))
+    listLi.forEach(item => item.addEventListener('click', function(e){
+        const tags = document.getElementById("tags");
+        const tagData = item.innerHTML
+        const tag = `<div class="tag ingredients-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
+        tags.innerHTML += tag;
+        item.classList.add("disabled");
+        const resultRecipe = tagsFilterRecipes(tagData, 'ingredients')
+        deleteTags()
+        // displayRecipe(resultRecipe)
+    }))
+}
+export function displayAppareilsList(appareils){
+const listContainer = document.getElementById("dropdown_appareils_content")
+const content = appareils.map(item => `<li data-type="appareils">${item}</li>`).join('')
+listContainer.innerHTML = content
+const listLi=listContainer.querySelectorAll('li')
+    listLi.forEach(item => item.addEventListener('click', function(e){
+        const tags = document.getElementById("tags");
+        const tagData = item.innerHTML
+        const tag = `<div class="tag appareils-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 2"></span></div>`
+        tags.innerHTML += tag;
+        item.classList.add("disabled");
+        const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
+        deleteTags()
+        // displayRecipe(resultRecipe)
+    }))
 }
 export function displayUstensilesList(ustensiles){
-    const listContainer = document.getElementById("dropdown_ustensiles_content")
-    const content = ustensiles.map(item => `<li data-type="ustensiles" >${item}</li>`).join('')
-    listContainer.innerHTML = content
-    const listLi=listContainer.querySelectorAll('li')
-        listLi.forEach(item => item.addEventListener('click', function(e){
-            const tags = document.getElementById("tags");
-            const tagData = item.innerHTML
-            const tag = `<div class="tag ustensils-tag">${tagData} <span class="delete-tag 3"></span></div>`
-	    	tags.innerHTML += tag;
-		    item.classList.add("disabled");
-			const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
-            deleteTags()
-			// displayRecipe(resultRecipe)
-        }))
+const listContainer = document.getElementById("dropdown_ustensiles_content")
+const content = ustensiles.map(item => `<li data-type="ustensiles" >${item}</li>`).join('')
+listContainer.innerHTML = content
+const listLi=listContainer.querySelectorAll('li')
+    listLi.forEach(item => item.addEventListener('click', function(e){
+        const tags = document.getElementById("tags");
+        const tagData = item.innerHTML
+        const tag = `<div class="tag ustensils-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 3"></span></div>`
+        tags.innerHTML += tag;
+        item.classList.add("disabled");
+        const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
+        deleteTags()
+        // displayRecipe(resultRecipe)
+    }))
 }
 
 export function filterElements(value, type){
@@ -106,12 +106,67 @@ dropdownBtns.forEach((bouton) => {
   });
 });
 
+// function deleteTags(){
+//     let deleteTag = document.getElementsByClassName('delete-tag');
+//     Array.prototype.forEach.call(deleteTag, function(tags){
+//         tags.addEventListener('click', ( )=>{
+//             tags.parentNode.remove()
+//             displayRecipe(recipes)
+//         })
+//     })
+// }
+
 function deleteTags(){
     let deleteTag = document.getElementsByClassName('delete-tag');
     Array.prototype.forEach.call(deleteTag, function(tags){
-        tags.addEventListener('click', ( )=>{
+        tags.addEventListener('click', (e)=>{
+            const text=tags.parentNode.querySelector('.tag-item').innerHTML
+            console.log('-tags: ', text)
             tags.parentNode.remove()
-            displayRecipe(recipes)
+            
+            selectedTags= selectedTags.filter( function(e){
+                return e!==text
+            })
+            console.log("selectedTags", selectedTags)
+            const listTags=selectedTags.filter(tag=>tag.tag.trim()!==text.trim())
+            console.log('listTags', listTags)
+            let resultats=recipes
+            listTags.forEach(tag=>{
+                resultats=filterByTags_(tag.tag, tag.type, resultats)
+            })
+            displayRecipe(resultats)
         })
     })
 }
+
+export function filterByTags_(tag, type, recettes){
+    let recipeResult = [] 
+    switch (type ){
+        case "ingredients" : 
+           recettes.forEach(recipe => {
+                recipe.ingredients.forEach(ingredient => {
+                    if (ingredient.ingredient.toLowerCase() === tag.toLowerCase()){
+                        recipeResult.push(recipe)
+                    }
+                })
+            })
+        break;
+        case 'appareils' : 
+           recettes.forEach(recipe => {
+                if (recipe.appliance.toLowerCase() === tag.toLowerCase()){
+                    recipeResult.push(recipe)
+                }
+            })
+            break;
+            case "ustensiles":
+               recettes.forEach(recipe => {
+                    recipe.ustensils.forEach(ustensil => {
+                        if (ustensil.toLowerCase() === tag.toLowerCase()){
+                            recipeResult.push(recipe)
+                        }
+                    })
+                })
+            break; 
+        }
+        return recipeResult
+    }

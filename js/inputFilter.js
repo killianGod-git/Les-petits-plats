@@ -1,8 +1,10 @@
 import { recipes ,resultRecipes } from "./index.js";
 import { displayRecipe } from "./displayRecipe.js";
+
 const mainSearch = document.getElementById('searchbar')
 const secondSearchContainer = document.getElementById('filtres_precis')
 const secondSearch = secondSearchContainer.querySelectorAll('input')
+export const selectedTags=[]
 export function syncInput(){
     // mainSearch.addEventListener('keyup', function(){
     //     secondSearch.forEach(secondSearchInput => {
@@ -30,6 +32,7 @@ export function inputFilterRecipes(){
 }
 
 export function tagsFilterRecipes(tag, type){
+    console.log(resultRecipes.recipes.length, '--', selectedTags)
     let recipeResult = [] 
     switch (type ){
         case "ingredients" : 
@@ -60,5 +63,8 @@ export function tagsFilterRecipes(tag, type){
         }
        resultRecipes.recipes = [...recipeResult]
         displayRecipe(resultRecipes.recipes)
+        selectedTags.push({type, tag})
         return recipeResult
     }
+
+
