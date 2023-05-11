@@ -3,13 +3,7 @@ import { recipes, detailsRecettes } from "./index.js";
 import { tagsFilterRecipes, selectedTags } from "./inputFilter.js";
 import { displayRecipe } from "./displayRecipe.js";
 
-// 
-// 
-// fonctions création dropdown a refactoriser 
-// trop de répétitions dans le code 
-// 
-// 
-// ingredients fonctions
+
 
 // création dropdown
 export function displayDropdown(data){
@@ -41,7 +35,7 @@ const listLi=listContainer.querySelectorAll('li')
     listLi.forEach(item => item.addEventListener('click', function(e){
         const tags = document.getElementById("tags");
         const tagData = item.innerHTML
-        const tag = `<div class="tag ingredients-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
+        const tag = `<div class="tag appareils-tag"><span class='tag-item'>${tagData} </span><span class="delete-tag 1"><img src="./img/delete.svg" /></span></div>`
         tags.innerHTML += tag;
         item.classList.add("disabled");
         const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
@@ -106,32 +100,20 @@ dropdownBtns.forEach((bouton) => {
   });
 });
 
-// function deleteTags(){
-//     let deleteTag = document.getElementsByClassName('delete-tag');
-//     Array.prototype.forEach.call(deleteTag, function(tags){
-//         tags.addEventListener('click', ( )=>{
-//             tags.parentNode.remove()
-//             displayRecipe(recipes)
-//         })
-//     })
-// }
 
 function deleteTags(){
     let deleteTag = document.getElementsByClassName('delete-tag');
     Array.prototype.forEach.call(deleteTag, function(tags){
         tags.addEventListener('click', (e)=>{
             const text=tags.parentNode.querySelector('.tag-item').innerHTML
-            console.log('-tags: ', text)
             tags.parentNode.remove()
-            
-            selectedTags= selectedTags.filter( function(e){
-                return e!==text
+            const indexTag = selectedTags.findIndex(item => {
+                return item.tag.trim() === text.trim()
             })
-            console.log("selectedTags", selectedTags)
-            const listTags=selectedTags.filter(tag=>tag.tag.trim()!==text.trim())
-            console.log('listTags', listTags)
+            selectedTags.splice(indexTag, 1)
+           
             let resultats=recipes
-            listTags.forEach(tag=>{
+            selectedTags.forEach(tag=>{
                 resultats=filterByTags_(tag.tag, tag.type, resultats)
             })
             displayRecipe(resultats)
