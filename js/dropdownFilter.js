@@ -24,7 +24,6 @@ export function displayIngredientsList(ingredients){
         item.classList.add("disabled");
         const resultRecipe = tagsFilterRecipes(tagData, 'ingredients')
         deleteTags()
-        // displayRecipe(resultRecipe)
     }))
 }
 export function displayAppareilsList(appareils){
@@ -40,7 +39,6 @@ const listLi=listContainer.querySelectorAll('li')
         item.classList.add("disabled");
         const resultRecipe = tagsFilterRecipes(tagData, 'appareils')
         deleteTags()
-        // displayRecipe(resultRecipe)
     }))
 }
 export function displayUstensilesList(ustensiles){
@@ -56,7 +54,6 @@ const listLi=listContainer.querySelectorAll('li')
         item.classList.add("disabled");
         const resultRecipe = tagsFilterRecipes(tagData, 'ustensiles')
         deleteTags()
-        // displayRecipe(resultRecipe)
     }))
 }
 

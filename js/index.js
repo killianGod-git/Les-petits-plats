@@ -1,7 +1,7 @@
 import { getRecipes } from "./api.js"
 import { displayRecipe } from "./displayRecipe.js"
 import {  filterElements } from "./dropdownFilter.js"
-import { syncInput, inputFilterRecipes } from "./inputFilter.js"
+import {  inputFilterRecipes } from "./inputFilter.js"
 export let resultRecipes = {recipes: []}
 export let recipes = []
 export const detailsRecettes = {
@@ -45,7 +45,7 @@ async function init(){
         } )
     })
     inputFilterRecipes()
-    syncInput()
+    
     
 }
 
