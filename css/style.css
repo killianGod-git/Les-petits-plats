@@ -58,6 +58,9 @@ header h1{
     font-family: 'lato';
     font-weight: 700;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .dropdown-content{
     display: none;
@@ -151,7 +154,7 @@ header h1{
     display: block;
 }
 .hidden{
-    display: none;
+    display: none!important;
 }
 li.disabled {
     pointer-events: none;

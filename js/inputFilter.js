@@ -5,13 +5,7 @@ const mainSearch = document.getElementById('searchbar')
 const secondSearchContainer = document.getElementById('filtres_precis')
 const secondSearch = secondSearchContainer.querySelectorAll('input')
 export const selectedTags=[]
-// export function syncInput(){
-//     mainSearch.addEventListener('keyup', function(){
-//         secondSearch.forEach(secondSearchInput => {
-//             secondSearchInput.value = mainSearch.value
-//         });
-//     })
-// }
+
 
 function searchRecipes(searchTerm){
     return recipes.filter(recipe => {
