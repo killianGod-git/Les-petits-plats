@@ -149,6 +149,7 @@ header h1{
 #filtres_precis li{
     list-style: none;
     color: #fff;
+    font-family: 'Lato';
 }
 .visible{
     display: block;

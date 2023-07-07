@@ -75,7 +75,7 @@ export function filterElements(value, type){
 
 
 
-    const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+const dropdownBtns = document.querySelectorAll('.dropdown-btn');
 
 dropdownBtns.forEach((bouton) => {
   bouton.addEventListener('click', function() {
@@ -108,44 +108,13 @@ function deleteTags(){
                 return item.tag.trim() === text.trim()
             })
             selectedTags.splice(indexTag, 1)
-           
             let resultats=recipes
             selectedTags.forEach(tag=>{
-                resultats=filterByTags_(tag.tag, tag.type, resultats)
+                resultats=tagsFilterRecipes(tag.tag, tag.type, false)
             })
+            
             displayRecipe(resultats)
         })
     })
 }
 
-export function filterByTags_(tag, type, recettes){
-    let recipeResult = [] 
-    switch (type ){
-        case "ingredients" : 
-           recettes.forEach(recipe => {
-                recipe.ingredients.forEach(ingredient => {
-                    if (ingredient.ingredient.toLowerCase() === tag.toLowerCase()){
-                        recipeResult.push(recipe)
-                    }
-                })
-            })
-        break;
-        case 'appareils' : 
-           recettes.forEach(recipe => {
-                if (recipe.appliance.toLowerCase() === tag.toLowerCase()){
-                    recipeResult.push(recipe)
-                }
-            })
-            break;
-            case "ustensiles":
-               recettes.forEach(recipe => {
-                    recipe.ustensils.forEach(ustensil => {
-                        if (ustensil.toLowerCase() === tag.toLowerCase()){
-                            recipeResult.push(recipe)
-                        }
-                    })
-                })
-            break; 
-        }
-        return recipeResult
-    }

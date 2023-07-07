@@ -8,13 +8,19 @@ export const selectedTags=[]
 
 
 function searchRecipes(searchTerm){
-    return recipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(searchTerm) || recipe.description.toLowerCase().includes( searchTerm)  
+    const partialResult=selectedTags.length<=0? recipes:[]
+    selectedTags.forEach(({type, tag})=>{
+        const list=tagsFilterRecipes(tag, type)
+        partialResult.push(list)
+    })
+    console.log('selectedTags',  partialResult);
+    return partialResult.filter(recipe => {
+        return recipe.name.toLowerCase().includes(searchTerm) || recipe.description.toLowerCase().includes( searchTerm) 
     })
 }
 function filterRecipes(){
     const searchTerm = mainSearch.value;
-    const searchedRecipes = searchRecipes(searchTerm);
+    const searchedRecipes = searchRecipes(searchTerm.toLowerCase());
     displayRecipe(searchedRecipes)
         
     
@@ -25,7 +31,7 @@ export function inputFilterRecipes(){
     })
 }
 
-export function tagsFilterRecipes(tag, type){
+export function tagsFilterRecipes(tag, type, addTag=true){
     console.log(resultRecipes.recipes.length, '--', selectedTags)
     let recipeResult = [] 
     switch (type ){
@@ -57,7 +63,9 @@ export function tagsFilterRecipes(tag, type){
         }
        resultRecipes.recipes = [...recipeResult]
         displayRecipe(resultRecipes.recipes)
-        selectedTags.push({type, tag})
+        if (addTag){
+            selectedTags.push({type, tag})
+        }
         return recipeResult
     }
 
