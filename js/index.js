@@ -17,10 +17,10 @@ export function decomposeRecettes(recipes){
     recipes.forEach(recipe => {
         const ingredients = recipe.ingredients;
         ingredients.forEach(ingredientsRecipe => {
-            ingredientsList.push(ingredientsRecipe.ingredient.toUpperCase())
+            ingredientsList.push(ingredientsRecipe.ingredient.toLowerCase())
         })
-        appareilsList.push(recipe.appliance.toUpperCase())
-        recipe.ustensils.forEach( ustensile => ustensilesList.push(ustensile.toUpperCase()))
+        appareilsList.push(recipe.appliance.toLowerCase())
+        recipe.ustensils.forEach( ustensile => ustensilesList.push(ustensile.toLowerCase()))
     })
     detailsRecettes.ingredients = [...new Set(ingredientsList)]
     detailsRecettes.appareils = [...new Set(appareilsList)]
@@ -41,7 +41,7 @@ async function init(){
     const inputs = document.querySelectorAll('#filtres_precis .filterDropdown')
     inputs.forEach(input => {
         input.addEventListener('keyup', (event) =>{
-            filterElements(event.target.value.toUpperCase(), input.getAttribute('id'))
+            filterElements(event.target.value.toLowerCase(), input.getAttribute('id'))
         } )
     })
     inputFilterRecipes()

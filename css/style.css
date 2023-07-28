@@ -45,7 +45,12 @@ header h1{
     display: flex;
     gap: 15px;
 }
-
+.section_recherche{
+    padding-bottom: 80px;
+}
+#filtres_precis{
+    position: absolute;
+}
 #filtres_precis ul{
     column-count: 3;
     column-gap: 5px;
@@ -150,6 +155,7 @@ header h1{
     list-style: none;
     color: #fff;
     font-family: 'Lato';
+    text-transform: capitalize;
 }
 .visible{
     display: block;
