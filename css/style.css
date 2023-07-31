@@ -52,8 +52,11 @@ header h1{
     position: absolute;
 }
 #filtres_precis ul{
-    column-count: 3;
-    column-gap: 5px;
+    overflow: auto;
+    max-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 #filtres_precis .dropdown-btn{
     padding: 15px;
@@ -66,6 +69,17 @@ header h1{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    font-size: 18px;
+}
+.filterDropdown{
+    font-size: 18px;
+    color: #fff;
+    border: none!important;
+}
+.filterDropdown::placeholder{
+    color: #fff;
+    opacity: 0.5;
+
 }
 .dropdown-content{
     display: none;
@@ -156,6 +170,7 @@ header h1{
     color: #fff;
     font-family: 'Lato';
     text-transform: capitalize;
+    width: 30%;
 }
 .visible{
     display: block;
