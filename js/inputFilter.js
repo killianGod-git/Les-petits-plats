@@ -35,6 +35,10 @@ function filterRecipes(){
         displayRecipe(searchedRecipes)
     } else {
         console.log("pas de recettes ")
+        const section = document.getElementById('section_recettes')
+        const textNoRecipes = `<p> Aucune recette ne correspond à votre critère… vous pouvez
+        chercher « tarte aux pommes », « poisson », etc.</p>`
+        section.innerHTML = textNoRecipes;
     }
         
     
