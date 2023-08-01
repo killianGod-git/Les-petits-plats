@@ -13,12 +13,10 @@ function searchRecipes(searchTerm){
         const list=tagsFilterRecipes(tag, type, false)
         list.forEach((item) => {
             if ( !partialResult.find((re) => re.id === item.id)){
-                console.log('list' , list)
-                partialResult.push(list)
+                partialResult.push(item)
             }
         })
     })
-    console.log(partialResult)
     return partialResult.filter(recipe => {
         return recipe.name.toLowerCase().includes(searchTerm) ||
             recipe.description.toLowerCase().includes( searchTerm) ||
@@ -31,10 +29,8 @@ function filterRecipes(){
     const searchTerm = mainSearch.value;
     const searchedRecipes = searchRecipes(searchTerm.toLowerCase());
     if (searchedRecipes.length !== 0){
-        console.log(searchedRecipes)
         displayRecipe(searchedRecipes)
     } else {
-        console.log("pas de recettes ")
         const section = document.getElementById('section_recettes')
         const textNoRecipes = `<div class="emptyResult"><p> Aucune recette ne correspond à votre critère… vous pouvez
         chercher « tarte aux pommes », « poisson », etc.</p></div>`
@@ -52,7 +48,6 @@ export function inputFilterRecipes(){
 }
 
 export function tagsFilterRecipes(tag, type, addTag=true){
-    console.log("addTag", addTag)
     let recipeResult = [] 
     switch (type ){
         case "ingredients" : 

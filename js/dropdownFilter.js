@@ -112,8 +112,7 @@ function deleteTags(){
             selectedTags.forEach(tag=>{
                 resultats=tagsFilterRecipes(tag.tag, tag.type, false)
             })
-            
-            displayRecipe(resultats)
+            displayRecipe(recipes)
         })
     })
 }

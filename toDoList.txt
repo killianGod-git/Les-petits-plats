@@ -14,9 +14,8 @@ To do list - Les petits plats :
 
 	-- Dropdown
 		--- retirer les options une fois qu'elle est séléctionnée 
-
-	-- Recherche 
-		--- Réparer le croisement des résultat de mes tags et du champ principal 
+	-- tags
+		--- Quand un tag est supprimé il faut recharger les recettes avec les tags en places
 }
 
 
