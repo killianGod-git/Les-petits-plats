@@ -10,11 +10,9 @@ To do list - Les petits plats :
 
 - Terminer ma version du projet avec forEach, filter,map...{
 	-- Quand je fais une recherhe principale qui ne donne pas de résultat :
-		--- Vider options ingrédients, appareils, ustensiles 
-		--- Voir style texte
+		--- Vider options tags ingrédients, appareils, ustensiles 
 
 	-- Dropdown
-		--- hover option ingrédients, appareils, ustensiles 
 		--- retirer les options une fois qu'elle est séléctionnée 
 
 	-- Recherche 

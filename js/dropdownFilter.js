@@ -13,7 +13,7 @@ export function displayDropdown(data){
 }
 export function displayIngredientsList(ingredients){
     const listContainer = document.getElementById("dropdown_ingredients_content")
-    const content = ingredients.map(item => `<li data-type="ingredients" >${item}</li>`).join('')
+    const content = ingredients.map(item => `<li class="tagElement" data-type="ingredients" >${item}</li>`).join('')
     listContainer.innerHTML = content
     const listLi=listContainer.querySelectorAll('li')
     listLi.forEach(item => item.addEventListener('click', function(e){
@@ -28,7 +28,7 @@ export function displayIngredientsList(ingredients){
 }
 export function displayAppareilsList(appareils){
 const listContainer = document.getElementById("dropdown_appareils_content")
-const content = appareils.map(item => `<li data-type="appareils">${item}</li>`).join('')
+const content = appareils.map(item => `<li class="tagElement" data-type="appareils">${item}</li>`).join('')
 listContainer.innerHTML = content
 const listLi=listContainer.querySelectorAll('li')
     listLi.forEach(item => item.addEventListener('click', function(e){
@@ -43,7 +43,7 @@ const listLi=listContainer.querySelectorAll('li')
 }
 export function displayUstensilesList(ustensiles){
 const listContainer = document.getElementById("dropdown_ustensiles_content")
-const content = ustensiles.map(item => `<li data-type="ustensiles" >${item}</li>`).join('')
+const content = ustensiles.map(item => `<li class="tagElement" data-type="ustensiles" >${item}</li>`).join('')
 listContainer.innerHTML = content
 const listLi=listContainer.querySelectorAll('li')
     listLi.forEach(item => item.addEventListener('click', function(e){

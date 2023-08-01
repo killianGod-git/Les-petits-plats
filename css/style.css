@@ -206,3 +206,13 @@ li.disabled {
 #containerIngredients, #containerAppareils, #containerUstensiles{
     max-width: 50%;
 }
+.tagElement{
+    cursor: pointer;
+}
+.tagElement:hover{
+    opacity: 0.5;
+}
+.emptyResult{
+    text-align: center;
+    font-size: 45px;
+}
