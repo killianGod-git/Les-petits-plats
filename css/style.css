@@ -203,3 +203,6 @@ li.disabled {
     padding: 10px 20px;
     border-radius: 5px;
 }
+#containerIngredients, #containerAppareils, #containerUstensiles{
+    max-width: 50%;
+}

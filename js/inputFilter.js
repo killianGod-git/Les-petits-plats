@@ -13,10 +13,12 @@ function searchRecipes(searchTerm){
         const list=tagsFilterRecipes(tag, type, false)
         list.forEach((item) => {
             if ( !partialResult.find((re) => re.id === item.id)){
+                console.log('list' , list)
                 partialResult.push(list)
             }
         })
     })
+    console.log(partialResult)
     return partialResult.filter(recipe => {
         return recipe.name.toLowerCase().includes(searchTerm) ||
             recipe.description.toLowerCase().includes( searchTerm) ||
@@ -39,12 +41,14 @@ function filterRecipes(){
 }
 export function inputFilterRecipes(){
     mainSearch.addEventListener('input', () => {
-        filterRecipes()
+        if(mainSearch.value.length >= 3){
+            filterRecipes()
+        }
     })
 }
 
 export function tagsFilterRecipes(tag, type, addTag=true){
-    console.log(resultRecipes.recipes.length, '--', selectedTags)
+    console.log("addTag", addTag)
     let recipeResult = [] 
     switch (type ){
         case "ingredients" : 
@@ -73,11 +77,12 @@ export function tagsFilterRecipes(tag, type, addTag=true){
                 })
             break; 
         }
-       resultRecipes.recipes = [...recipeResult]
+        resultRecipes.recipes = [...recipeResult]
         displayRecipe(resultRecipes.recipes)
         if (addTag){
             selectedTags.push({type, tag})
         }
+        console.log("recipeResult", recipeResult)
         return recipeResult
     }
 
