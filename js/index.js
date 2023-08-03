@@ -14,14 +14,23 @@ export function decomposeRecettes(recipes){
     const ingredientsList = []
     const appareilsList = []
     const ustensilesList = []
-    recipes.forEach(recipe => {
-        const ingredients = recipe.ingredients;
-        ingredients.forEach(ingredientsRecipe => {
-            ingredientsList.push(ingredientsRecipe.ingredient.toLowerCase())
-        })
+    
+    for (var index = 0; index < recipes.length; index++) {
+        const recipe = recipes[index]
+        var ingredientIndex = 0
+        while(ingredientIndex < recipe.ingredients.length){
+            const ingredientsRecipe = recipe.ingredients[ingredientIndex];
+            ingredientsList.push(ingredientsRecipe.ingredient.toLowerCase());
+            ingredientIndex++;
+        }
         appareilsList.push(recipe.appliance.toLowerCase())
-        recipe.ustensils.forEach( ustensile => ustensilesList.push(ustensile.toLowerCase()))
-    })
+        for (var ustensilIndex = 0; ustensilIndex < recipe.ustensils.length; ustensilIndex++ ){
+            const ustensilRecipe = recipe.ustensils[ustensilIndex]
+            ustensilesList.push(ustensilRecipe.toLowerCase())
+            console.log(ustensilesList)
+        }
+
+    }
     detailsRecettes.ingredients = [...new Set(ingredientsList)]
     detailsRecettes.appareils = [...new Set(appareilsList)]
     detailsRecettes.ustensiles = [...new Set(ustensilesList)]

@@ -36,7 +36,8 @@ function filterRecipes(){
         const textNoRecipes = `<div class="emptyResult"><p> Aucune recette ne correspond à votre critère… vous pouvez
         chercher « tarte aux pommes », « poisson », etc.</p></div>`
         section.innerHTML = textNoRecipes;
-        displayDropdown(searchedRecipes)
+        //Reset tags list
+        // displayDropdown(searchedRecipes)
     }
         
     
