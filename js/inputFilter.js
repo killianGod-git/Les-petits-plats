@@ -1,5 +1,6 @@
 import { recipes ,resultRecipes } from "./index.js";
 import { displayRecipe } from "./displayRecipe.js";
+import { displayDropdown } from "./dropdownFilter.js";
 
 const mainSearch = document.getElementById('searchbar')
 const secondSearchContainer = document.getElementById('filtres_precis')
@@ -35,6 +36,7 @@ function filterRecipes(){
         const textNoRecipes = `<div class="emptyResult"><p> Aucune recette ne correspond à votre critère… vous pouvez
         chercher « tarte aux pommes », « poisson », etc.</p></div>`
         section.innerHTML = textNoRecipes;
+        displayDropdown(searchedRecipes)
     }
         
     
