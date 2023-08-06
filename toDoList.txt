@@ -9,13 +9,8 @@ To do list - Les petits plats :
 
 
 - Terminer ma version du projet avec forEach, filter,map...{
-	-- Quand je fais une recherhe principale qui ne donne pas de résultat :
-		--- Vider options tags ingrédients, appareils, ustensiles 
-
 	-- Dropdown
 		--- retirer les options une fois qu'elle est séléctionnée 
-	-- tags
-		--- Quand un tag est supprimé il faut recharger les recettes avec les tags en places
 }
 
 

@@ -1,15 +1,24 @@
 
-import { recipes, detailsRecettes } from "./index.js";
-import { tagsFilterRecipes, selectedTags } from "./inputFilter.js";
+import { recipes, detailsRecettes, resultRecipes } from "./index.js";
+import { tagsFilterRecipes, selectedTags, filterMainBar } from "./inputFilter.js";
 import { displayRecipe } from "./displayRecipe.js";
 
 
 
 // création dropdown
 export function displayDropdown(data){
-    displayIngredientsList(data.ingredients)
-    displayAppareilsList(data.appareils)
-    displayUstensilesList(data.ustensiles)
+    let list = data
+    if (data.length === 0 ){
+        list = {
+            ingredients : [],
+            appareils : [],
+            ustensiles : []
+
+        }
+    }
+    displayIngredientsList(list.ingredients)
+    displayAppareilsList(list.appareils)
+    displayUstensilesList(list.ustensiles)
 }
 export function displayIngredientsList(ingredients){
     const listContainer = document.getElementById("dropdown_ingredients_content")
@@ -97,23 +106,28 @@ dropdownBtns.forEach((bouton) => {
   });
 });
 
-
+const mainSearch = document.getElementById('searchbar')
 function deleteTags(){
-    let deleteTag = document.getElementsByClassName('delete-tag');
-    Array.prototype.forEach.call(deleteTag, function(tags){
-        tags.addEventListener('click', (e)=>{
-            const text=tags.parentNode.querySelector('.tag-item').innerHTML
-            tags.parentNode.remove()
-            const indexTag = selectedTags.findIndex(item => {
-                return item.tag.trim() === text.trim()
+    let deleteTag = document.querySelectorAll('.delete-tag');
+        deleteTag.forEach( function(tags){
+            tags.addEventListener('click', (e)=>{
+                const text=tags.parentNode.querySelector('.tag-item').innerHTML
+                tags.parentNode.remove()
+                const indexTag = selectedTags.findIndex(item => {
+                    return item.tag.trim() === text.trim()
+                })
+                selectedTags.splice(indexTag, 1)
+                let resultats = recipes
+                if (selectedTags.length === 0 ){
+                    resultats = filterMainBar(mainSearch.value, recipes)
+                } else {
+                    resultRecipes.recipes = filterMainBar(mainSearch.value, recipes)
+                    selectedTags.forEach(tag=>{
+                        resultats=tagsFilterRecipes(tag.tag, tag.type, false)
+                    })
+                }
+                displayRecipe(resultats)
             })
-            selectedTags.splice(indexTag, 1)
-            let resultats=recipes
-            selectedTags.forEach(tag=>{
-                resultats=tagsFilterRecipes(tag.tag, tag.type, false)
-            })
-            displayRecipe(recipes)
         })
-    })
-}
+    }
 
