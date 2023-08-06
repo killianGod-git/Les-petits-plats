@@ -88,7 +88,6 @@ export function tagsFilterRecipes(tag, type, addTag = true) {
     if (addTag) {
         selectedTags.push({ type, tag })
     }
-    console.log("recipeResult", recipeResult)
     return recipeResult
 }
 

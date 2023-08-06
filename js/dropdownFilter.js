@@ -122,15 +122,10 @@ function deleteTags(){
                     resultats = filterMainBar(mainSearch.value, recipes)
                 } else {
                     resultRecipes.recipes = filterMainBar(mainSearch.value, recipes)
-                    console.log("resultRecipes.recipes", resultRecipes.recipes)
                     selectedTags.forEach(tag=>{
-                        console.log(tag.tag, tag.type )
                         resultats=tagsFilterRecipes(tag.tag, tag.type, false)
                     })
                 }
-                
-
-                console.log("resultats", resultats)
                 displayRecipe(resultats)
             })
         })
