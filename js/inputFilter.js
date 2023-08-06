@@ -1,26 +1,32 @@
 import { recipes, resultRecipes } from "./index.js";
 import { displayRecipe } from "./displayRecipe.js";
-import { displayDropdown } from "./dropdownFilter.js";
+
 
 const mainSearch = document.getElementById('searchbar')
 const secondSearchContainer = document.getElementById('filtres_precis')
-const secondSearch = secondSearchContainer.querySelectorAll('input')
 export const selectedTags = []
 
 
 function searchRecipes(searchTerm) {
-    const partialResult = selectedTags.length <= 0 ? recipes : []
-    selectedTags.forEach(({ type, tag }) => {
-        const list = tagsFilterRecipes(tag, type, false)
-        list.forEach((item) => {
+    const partialResult = selectedTags.length <= 0 ? recipes : [];
+    let tagIndex = 0;
+    while (tagIndex < selectedTags.length) {
+        const { type, tag } = selectedTags[tagIndex];
+        const list = tagsFilterRecipes(tag, type, false);
+        let itemIndex = 0;
+        while (itemIndex < list.length) {
+            const item = list[itemIndex];
             if (!partialResult.find((re) => re.id === item.id)) {
-                partialResult.push(item)
+                partialResult.push(item);
             }
-        })
-    })
-    return filterMainBar(searchTerm, partialResult);
+            itemIndex++;
+        }
+        tagIndex++;
+    }
 
+    return filterMainBar(searchTerm, partialResult);
 }
+
 export function filterMainBar(searchTerm, recipes) {
     return recipes.filter(recipe => {
         return recipe.name.toLowerCase().includes(searchTerm) ||
@@ -41,8 +47,6 @@ function filterRecipes() {
         const textNoRecipes = `<div class="emptyResult"><p> Aucune recette ne correspond à votre critère… vous pouvez
         chercher « tarte aux pommes », « poisson », etc.</p></div>`
         section.innerHTML = textNoRecipes;
-        //Reset tags list
-        // displayDropdown(searchedRecipes)
     }
 
 
@@ -56,40 +60,71 @@ export function inputFilterRecipes() {
 }
 
 export function tagsFilterRecipes(tag, type, addTag = true) {
-    let recipeResult = []
+    let recipeResult = [];
+    const recipes = resultRecipes.recipes;
+
     switch (type) {
         case "ingredients":
-            resultRecipes.recipes.forEach(recipe => {
-                recipe.ingredients.forEach(ingredient => {
+            let recipeIndex1 = 0;
+            while (recipeIndex1 < recipes.length) {
+                const recipe = recipes[recipeIndex1];
+                let ingredientIndex = 0;
+                const ingredients = recipe.ingredients;
+
+                while (ingredientIndex < ingredients.length) {
+                    const ingredient = ingredients[ingredientIndex];
                     if (ingredient.ingredient.toLowerCase() === tag.toLowerCase()) {
-                        recipeResult.push(recipe)
+                        recipeResult.push(recipe);
+                        break; // We found a match, no need to continue searching for this recipe
                     }
-                })
-            })
-            break;
-        case 'appareils':
-            resultRecipes.recipes.forEach(recipe => {
-                if (recipe.appliance.toLowerCase() === tag.toLowerCase()) {
-                    recipeResult.push(recipe)
+                    ingredientIndex++;
                 }
-            })
+
+                recipeIndex1++;
+            }
             break;
+
+        case 'appareils':
+            let recipeIndex2 = 0;
+            while (recipeIndex2 < recipes.length) {
+                const recipe = recipes[recipeIndex2];
+                if (recipe.appliance.toLowerCase() === tag.toLowerCase()) {
+                    recipeResult.push(recipe);
+                }
+                recipeIndex2++;
+            }
+            break;
+
         case "ustensiles":
-            resultRecipes.recipes.forEach(recipe => {
-                recipe.ustensils.forEach(ustensil => {
+            let recipeIndex3 = 0;
+            while (recipeIndex3 < recipes.length) {
+                const recipe = recipes[recipeIndex3];
+                let ustensilIndex = 0;
+                const ustensils = recipe.ustensils;
+
+                while (ustensilIndex < ustensils.length) {
+                    const ustensil = ustensils[ustensilIndex];
                     if (ustensil.toLowerCase() === tag.toLowerCase()) {
-                        recipeResult.push(recipe)
+                        recipeResult.push(recipe);
+                        break; // We found a match, no need to continue searching for this recipe
                     }
-                })
-            })
+                    ustensilIndex++;
+                }
+
+                recipeIndex3++;
+            }
             break;
     }
-    resultRecipes.recipes = [...recipeResult]
-    displayRecipe(resultRecipes.recipes)
+
+    resultRecipes.recipes = [...recipeResult];
+    displayRecipe(resultRecipes.recipes);
+
     if (addTag) {
-        selectedTags.push({ type, tag })
+        selectedTags.push({ type, tag });
     }
-    return recipeResult
+
+    return recipeResult;
 }
+
 
 
