@@ -172,6 +172,12 @@ header h1{
     text-transform: capitalize;
     width: 30%;
 }
+.tagInput{
+    display: flex;
+}
+.tagInput img{
+    transform: rotate(180deg);
+}
 .visible{
     display: block;
 }
