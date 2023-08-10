@@ -1,22 +1,10 @@
 To do list - Les petits plats :
 
-- Terminer ma version du projet avec forEach, filter,map...
+V Terminer ma version du projet avec forEach, filter,map...
 - Faire des fiches d'investigation de fonctionnalité
-- Faire une version du projet avec while/for... 
-- Faire algorigrame 
+V Faire une version du projet avec while/for... 
+V Faire algorigrame 
 - Comparer les 2 Méthode et faire un choix expliqué 
 
 
 
-- Terminer ma version du projet avec forEach, filter,map...{
-	-- Dropdown
-		--- retirer les options une fois qu'elle est séléctionnée 
-}
-
-
-- Implémenter la deuxième version du projet : {
-	-- Voir fonctionnement for / while etc 
-	-- Shématiser le fonctionnement du code 
-	-- Faire fonctionner la recherche principale
-	-- Croiser les résultats avec les tags 
-}
