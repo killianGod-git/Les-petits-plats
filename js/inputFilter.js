@@ -28,15 +28,29 @@ function searchRecipes(searchTerm) {
 }
 
 export function filterMainBar(searchTerm, recipes) {
-    return recipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(searchTerm) ||
-            recipe.description.toLowerCase().includes(searchTerm) ||
-            recipe.ingredients.some((ingredientObj) => {
-                const ingredient = ingredientObj.ingredient.toLowerCase();
-                return ingredient.includes(searchTerm);
-            });
-    })
+    const filteredRecipes = [];
+    let i = 0;
+
+    while (i < recipes.length) {
+        const recipe = recipes[i];
+        const name = recipe.name.toLowerCase();
+        const description = recipe.description.toLowerCase();
+        
+        const ingredientMatch = recipe.ingredients.some(ingredientObj => {
+            const ingredient = ingredientObj.ingredient.toLowerCase();
+            return ingredient.includes(searchTerm);
+        });
+
+        if (name.includes(searchTerm) || description.includes(searchTerm) || ingredientMatch) {
+            filteredRecipes.push(recipe);
+        }
+
+        i++;
+    }
+
+    return filteredRecipes;
 }
+
 function filterRecipes() {
     const searchTerm = mainSearch.value;
     const searchedRecipes = searchRecipes(searchTerm.toLowerCase());
