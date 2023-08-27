@@ -119,7 +119,13 @@ function deleteTags(){
                 selectedTags.splice(indexTag, 1)
                 let resultats = recipes
                 if (selectedTags.length === 0 ){
-                    resultats = filterMainBar(mainSearch.value, recipes)
+                    if(mainSearch.value.length >= 3){
+                        resultats = filterMainBar(mainSearch.value, recipes)
+                    } else{
+                        resultats = recipes
+                        resultRecipes.recipes = recipes
+                    }
+                   
                 } else {
                     resultRecipes.recipes = filterMainBar(mainSearch.value, recipes)
                     selectedTags.forEach(tag=>{

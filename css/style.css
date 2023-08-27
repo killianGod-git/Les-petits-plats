@@ -106,11 +106,18 @@ header h1{
 .recette_temps{
     width: 20%;
 }
-.recette_titre h2{
-    width: 70%;
+.recette_titre h2 {
+    width: 85%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: 18px;
+    font-family: 'Lato';
+    padding-left: 40px;
+}
+.recette_temps h2{
+    font-size: 18px;
+    font-family: 'Lato';
 }
 #section_recettes .recette{
     width: 30%;
@@ -215,4 +222,23 @@ li.disabled {
 .emptyResult{
     text-align: center;
     font-size: 45px;
+}
+
+@media screen  and (max-width:1200px){
+    #section_recettes .recette{
+        width: 49%;
+    }
+    #filtres_precis li{
+        width: 50%;
+    }
+}
+@media screen and (max-width:991px) {
+    #filtres_precis li{
+        width: 100%;
+    }
+}
+@media screen  and (max-width:667px){
+    #section_recettes .recette{
+        width: 100%;
+    }
 }

@@ -51,6 +51,9 @@ export function inputFilterRecipes() {
         if (mainSearch.value.length >= 3) {
             filterRecipes()
         }
+        else{
+            displayRecipe(recipes)
+        }
     })
 }
 
