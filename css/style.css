@@ -6,7 +6,7 @@ body{
     font-family: 'Roboto';
 }
 header .bloc_logo{
-    width: 30%;
+
     margin: 20px auto;
     display: flex;
     align-items: center;
@@ -240,5 +240,21 @@ li.disabled {
 @media screen  and (max-width:667px){
     #section_recettes .recette{
         width: 100%;
+    }
+    #filtres_precis{
+        position: relative;
+        flex-direction: column;
+    }
+    #containerIngredients, #containerAppareils, #containerUstensiles{
+        max-width: 100%;
+    }
+    #filtres_precis .dropdown-btn{
+        justify-content: center;
+    }
+    .section_recherche{
+        padding-bottom: 30px;
+    }
+    .filtres_selectiones{
+        flex-wrap: wrap;
     }
 }
